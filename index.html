@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasya Wulandari | AI Engineer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="bg-blur"></div>
+
+<header class="hero">
+    <div class="container">
+        <h1>Hi, I'm <span class="highlight">Tasya Wulandari</span></h1>
+        <h2><span id="typing-text"></span></h2>
+
+        <p class="hero-desc">
+            I design and build <strong>end-to-end AI systems</strong> across
+            Computer Vision, Robotics, and NLP — focused on solving
+            <strong>real-world, high-stakes problems</strong>.
+        </p>
+
+        <div class="buttons">
+            <a href="#projects" class="btn">View Projects</a>
+            <a href="#" class="btn btn-outline">GitHub</a>
+            <a href="#" class="btn btn-outline">LinkedIn</a>
+        </div>
+    </div>
+</header>
+
+<section class="about container">
+    <h3>Engineering Philosophy</h3>
+
+    <div class="philosophy-flow">
+
+        <!-- STEP 1 -->
+        <div class="card">
+            <div class="icon">
+                <!-- DATABASE / DATA -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                    <path d="M3 5v6c0 1.7 4 3 9 3s9-1.3 9-3V5"/>
+                    <path d="M3 11v6c0 1.7 4 3 9 3s9-1.3 9-3v-6"/>
+                </svg>
+            </div>
+            <h4>Understand the Data</h4>
+            <p>
+                Ensure data quality, consistency, and edge-case coverage.
+                Reliable systems start from well-structured and meaningful data.
+            </p>
+        </div>
+
+        <!-- ARROW -->
+        <div class="arrow">→</div>
+
+        <!-- STEP 2 -->
+        <div class="card">
+            <div class="icon">
+                <!-- TARGET -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9"/>
+                    <circle cx="12" cy="12" r="5"/>
+                    <circle cx="12" cy="12" r="2"/>
+                </svg>
+            </div>
+            <h4>Identify the Real Problem</h4>
+            <p>
+                Translate business needs into clear technical objectives.
+                Focus on solving impactful problems, not just building models.
+            </p>
+        </div>
+
+        <!-- ARROW -->
+        <div class="arrow">→</div>
+
+        <!-- STEP 3 -->
+        <div class="card">
+            <div class="icon">
+                <!-- REFRESH / ITERATION -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path d="M21 12a9 9 0 1 1-3-6.7"/>
+                    <polyline points="21 3 21 9 15 9"/>
+                </svg>
+            </div>
+            <h4>Iterate & Improve</h4>
+            <p>
+                Continuously evaluate, test, and refine solutions based on
+                real-world performance and feedback.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- CYCLE LINE -->
+    <div class="cycle-line"></div>
+</section>
+
+<section id="projects" class="projects">
+    <div class="container">
+        <h3>Applied AI & Robotics Projects</h3>
+
+        <div class="project-grid">
+
+            <div class="project-card">
+                <div class="tech-tag">Computer Vision</div>
+                <h4>Medical Equipment Detection</h4>
+                <p>
+                    Built a detection system under <strong>data scarcity</strong>,
+                    scaling dataset from 235 to 1000+ images via augmentation.
+                </p>
+                <p class="insight">
+                    <strong>Insight:</strong> Annotation quality mattered more than model tuning
+                    due to high visual similarity between classes.
+                </p>
+                <div class="tech-stack">YOLOv5 • Roboflow • Python</div>
+            </div>
+
+            <div class="project-card">
+                <div class="tech-tag">Robotics</div>
+                <h4>Autonomous Fire Response</h4>
+                <p>
+                    Developed a real-time system integrating multi-sensor input
+                    for navigation and fire detection.
+                </p>
+                <p class="insight">
+                    <strong>Insight:</strong> Noisy sensor data required continuous threshold tuning
+                    in dynamic environments.
+                </p>
+                <div class="tech-stack">Arduino • Sensors • C++</div>
+            </div>
+
+            <div class="project-card">
+                <div class="tech-tag">NLP</div>
+                <h4>Clinical Text Classification</h4>
+                <p>
+                    Classified 45,000+ medical records using Transformer models
+                    to extract structured insights.
+                </p>
+                <p class="insight">
+                    <strong>Insight:</strong> Transformers outperformed traditional ML by capturing context.
+                </p>
+                <div class="tech-stack">DistilBERT • Transformers • Python</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <h3>Let's Collaborate</h3>
+        <p>Email: tasya.wulandari@email.com</p>
+        <p>© 2026 Tasya Wulandari</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

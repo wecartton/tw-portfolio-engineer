@@ -1,0 +1,357 @@
+:root {
+    --bg: #020617;
+    --text: #e2e8f0;
+
+    /* PRIMARY ACCENTS */
+    --blue: #38bdf8;
+    --purple: #8b5cf6;
+    --pink: #ec4899;
+    --cyan: #22d3ee;
+
+    /* GRADIENT */
+    --gradient-main: linear-gradient(135deg, #38bdf8, #8b5cf6, #ec4899);
+
+    --card: rgba(30, 41, 59, 0.5);
+    --border: rgba(255,255,255,0.08);
+
+    /* SPACING SYSTEM */
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 40px;
+    --space-xl: 80px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text);
+
+    background:
+        radial-gradient(circle at 15% 20%, rgba(56,189,248,0.15), transparent),
+        radial-gradient(circle at 85% 70%, rgba(139,92,246,0.15), transparent),
+        radial-gradient(circle at 50% 90%, rgba(236,72,153,0.12), transparent),
+        #020617;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1120px;
+    margin: auto;
+    padding: 0 var(--space-md);
+}
+
+/* HERO */
+.hero {
+    padding: 140px 0 100px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3.2rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+/* GRADIENT TEXT */
+.highlight {
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero h2 {
+    margin: var(--space-sm) 0;
+    font-weight: 400;
+    color: #94a3b8;
+    min-height: 32px;
+}
+
+.hero-desc {
+    max-width: 620px;
+    margin: var(--space-md) auto;
+    line-height: 1.7;
+    color: #cbd5e1;
+}
+
+/* BUTTONS */
+.buttons {
+    margin-top: var(--space-md);
+}
+
+.btn {
+    padding: 12px 26px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-block;
+    margin: 6px;
+    transition: all 0.3s ease;
+
+    background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+    color: white;
+    font-weight: 500;
+    border: none;
+}
+
+.btn-outline {
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    background: transparent;
+    backdrop-filter: blur(10px);
+}
+
+.btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 40px rgba(139,92,246,0.4);
+}
+
+/* ABOUT */
+.about {
+    padding: var(--space-xl) 0;
+    text-align: center;
+}
+
+.about h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-lg);
+}
+
+/* PHILOSOPHY */
+.philosophy {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+    gap: var(--space-md);
+}
+
+.philosophy .card {
+    padding: var(--space-md);
+    border-radius: 14px;
+    background: rgba(30, 41, 59, 0.4);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.philosophy .card h4 {
+    margin-bottom: var(--space-sm);
+    font-weight: 500;
+}
+
+.philosophy .card p {
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+.philosophy .card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(139,92,246,0.4);
+}
+
+/* PROJECT */
+.projects {
+    padding: var(--space-xl) 0;
+}
+
+.projects h3 {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    font-size: 1.6rem;
+}
+
+.project-grid {
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+}
+
+/* PROJECT CARD */
+.project-card {
+    position: relative;
+    padding: var(--space-md);
+    border-radius: 16px;
+    background: rgba(30, 41, 59, 0.4);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.06);
+
+    transition: all 0.35s ease;
+
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.project-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* GRADIENT BORDER EFFECT */
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(135deg, #38bdf8, #8b5cf6, #ec4899);
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.project-card:hover {
+    transform: translateY(-12px) scale(1.01);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.7),
+        0 0 20px rgba(139,92,246,0.2);
+}
+
+/* CONTENT */
+.tech-tag {
+    font-size: 0.75rem;
+    color: var(--cyan);
+    margin-bottom: var(--space-sm);
+}
+
+.project-card h4 {
+    margin-bottom: var(--space-xs);
+    font-weight: 500;
+}
+
+.project-card p {
+    font-size: 0.9rem;
+    color: #cbd5e1;
+}
+
+/* INSIGHT BOX */
+.insight {
+    margin-top: var(--space-sm);
+    padding: var(--space-sm);
+    font-size: 0.85rem;
+
+    background: linear-gradient(
+        135deg,
+        rgba(56,189,248,0.15),
+        rgba(139,92,246,0.15)
+    );
+
+    border-left: 3px solid var(--purple);
+    border-radius: 8px;
+}
+
+/* STACK */
+.tech-stack {
+    margin-top: var(--space-sm);
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: var(--space-xl) 0;
+    color: #94a3b8;
+}
+
+/* FLOW LAYOUT */
+.philosophy-flow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+}
+
+/* CARD UPDATE */
+.philosophy-flow .card {
+    flex: 1;
+    min-width: 260px;
+    text-align: center;
+
+    padding: var(--space-md);
+    border-radius: 16px;
+
+    background: rgba(30, 41, 59, 0.4);
+    backdrop-filter: blur(16px);
+
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: 0.3s;
+}
+
+/* ICON */
+.icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto var(--space-sm);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+    box-shadow: 0 10px 30px rgba(139,92,246,0.4);
+
+    transition: 0.3s;
+}
+
+/* SVG inside */
+.icon svg {
+    width: 28px;
+    height: 28px;
+    color: white;
+}
+
+/* Hover effect */
+.card:hover .icon {
+    transform: scale(1.1) rotate(3deg);
+    box-shadow: 0 15px 40px rgba(139,92,246,0.6);
+}
+
+/* ARROW BETWEEN CARDS */
+.arrow {
+    font-size: 28px;
+    color: var(--purple);
+    opacity: 0.7;
+}
+
+/* CYCLE LINE (BOTTOM) */
+.cycle-line {
+    margin-top: 40px;
+    height: 2px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+    background: linear-gradient(
+        to right,
+        transparent,
+        #8b5cf6,
+        transparent
+    );
+
+    position: relative;
+}
+
+.cycle-line::after {
+    content: "↺ Continuous Cycle";
+    position: absolute;
+    right: 0;
+    top: -22px;
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
