@@ -380,7 +380,7 @@ body {
 
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
+    grid-template-columns: 1.2fr 1fr;
     gap: var(--space-xl);
     align-items: start;
 }
@@ -408,71 +408,211 @@ body {
     background: var(--card);
 }
 
-.philosophy-flow {
+/* PHOTO COLUMN */
+.about-photo {
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.about-photo-wrap {
     display: flex;
     flex-direction: column;
+    gap: var(--space-md);
+    align-items: center;
+}
+
+.about-photo-frame {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 3/4;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--card);
+}
+
+.about-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-align: center;
+    padding: var(--space-md);
+}
+
+.photo-placeholder small {
+    font-size: 0.68rem;
+    opacity: 0.5;
+    font-family: 'Space Mono', monospace;
+}
+
+.photo-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(56,189,248,0.08), rgba(139,92,246,0.1));
+    pointer-events: none;
+}
+
+.about-photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 1px;
+    background: var(--gradient-main);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 2;
+}
+
+.about-photo-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    max-width: 320px;
+}
+
+.info-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    font-size: 0.82rem;
+    color: var(--text-mid);
+}
+
+.chip-icon { font-size: 1rem; flex-shrink: 0; }
+
+/* ── ENGINEERING PHILOSOPHY — standalone section ── */
+.philosophy-section {
+    background: var(--bg-2);
+    position: relative;
+    overflow: hidden;
+}
+
+.philosophy-subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-top: -28px;
+    margin-bottom: var(--space-lg);
+}
+
+.philosophy-cards {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: center;
     gap: 0;
 }
 
-.phi-card {
-    position: relative;
-    padding: var(--space-md);
+.phi-connector {
+    font-size: 1.6rem;
+    color: var(--purple);
+    opacity: 0.5;
+    padding: 0 var(--space-sm);
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.phi-card-h {
+    padding: var(--space-md) var(--space-md) var(--space-md);
     border-radius: var(--radius);
     background: var(--card);
     border: 1px solid var(--border);
-    backdrop-filter: blur(16px);
+    position: relative;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
-    gap: var(--space-xs);
+    gap: 10px;
+    overflow: hidden;
 }
 
-.phi-card:hover {
-    border-color: var(--border-glow);
-    background: var(--card-hover);
-    transform: translateX(6px);
+.phi-card-h::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    padding: 1px;
+    background: var(--gradient-main);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
-.phi-num {
+.phi-card-h:hover::before { opacity: 1; }
+.phi-card-h:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+
+.phi-card-num {
     font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     color: var(--purple);
     letter-spacing: 1px;
 }
 
-.phi-card .icon {
+.phi-card-icon {
     width: 44px; height: 44px;
     border-radius: 10px;
     background: var(--gradient-blue-purple);
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 6px 20px rgba(139,92,246,0.3);
+    flex-shrink: 0;
 }
 
-.phi-card .icon svg {
-    width: 22px; height: 22px;
-    color: white;
-}
+.phi-card-icon svg { width: 22px; height: 22px; color: white; }
 
-.phi-card h4 {
+.phi-card-h h4 {
     font-family: 'Syne', sans-serif;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 700;
 }
 
-.phi-card p {
-    font-size: 0.875rem;
+.phi-card-h p {
+    font-size: 0.84rem;
     color: var(--text-mid);
-    line-height: 1.6;
+    line-height: 1.65;
 }
 
-.phi-arrow {
-    text-align: center;
-    color: var(--purple);
-    font-size: 1.2rem;
-    opacity: 0.5;
-    padding: 4px 0;
+.phi-cycle-line {
+    margin-top: var(--space-lg);
+    text-align: right;
+    position: relative;
 }
 
+.phi-cycle-line::before {
+    content: '';
+    position: absolute;
+    left: 0; right: 60px;
+    top: 50%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(139,92,246,0.4), transparent);
+}
+
+.phi-cycle-line span {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-family: 'Space Mono', monospace;
+}
 /* ── EXPERIENCE ── */
 .experience { background: var(--bg); }
 
@@ -636,6 +776,7 @@ body {
 
 /* ── CLEAN PROJECT CARD ── */
 .project-card {
+    position: relative;
     padding: 26px 26px 22px;
     border-radius: var(--radius);
     background: var(--card);
@@ -656,6 +797,25 @@ body {
     transform: translateY(-4px);
     box-shadow: 0 16px 40px rgba(0,0,0,0.35);
 }
+
+/* Gradient border on hover */
+.project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    padding: 1px;
+    background: var(--gradient-main);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.project-card:hover::before { opacity: 1; }
 
 .project-card.hidden { display: none; }
 
@@ -684,6 +844,12 @@ body {
     background: rgba(139,92,246,0.07);
     border: 1px solid rgba(139,92,246,0.18);
     color: var(--purple);
+}
+
+.other-cat {
+    background: rgba(52,211,153,0.07);
+    border: 1px solid rgba(52,211,153,0.2);
+    color: var(--green);
 }
 
 .project-role {
@@ -880,6 +1046,34 @@ body {
     padding-top: 16px;
 }
 
+.modal-highlights-wrap {
+    margin-bottom: 20px;
+}
+
+.modal-highlights-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-top: 10px;
+}
+
+.modal-highlights-list li {
+    font-size: 0.86rem;
+    color: var(--text-mid);
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.6;
+}
+
+.modal-highlights-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-size: 0.7rem;
+    top: 3px;
+}
 .modal-stack-label {
     font-family: 'Space Mono', monospace;
     font-size: 0.65rem;
@@ -1184,10 +1378,14 @@ footer p {
 /* ── RESPONSIVE ── */
 @media (max-width: 1100px) {
     .project-grid { grid-template-columns: repeat(2, 1fr); }
+    .philosophy-cards { grid-template-columns: 1fr; }
+    .phi-connector { display: none; }
 }
 
 @media (max-width: 900px) {
     .about-grid { grid-template-columns: 1fr; }
+    .about-photo-wrap { flex-direction: row; align-items: flex-start; }
+    .about-photo-frame { max-width: 200px; }
     .contact-grid { grid-template-columns: 1fr; }
     .edu-cert-grid { grid-template-columns: 1fr; }
 }
@@ -1225,11 +1423,14 @@ footer p {
 
     .scroll-indicator { display: none; }
 
-    .philosophy-flow { gap: 0; }
+    .philosophy-cards { grid-template-columns: 1fr; }
+    .phi-connector { display: none; }
+    .about-photo-wrap { flex-direction: column; align-items: center; }
 }
 
 @media (max-width: 480px) {
     .skills-grid { grid-template-columns: 1fr; }
     .buttons { flex-direction: column; }
     .btn { justify-content: center; }
+    .hero-stats { flex-wrap: wrap; justify-content: center; }
 }

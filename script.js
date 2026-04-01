@@ -6,7 +6,9 @@
 const texts = [
     "Software Engineer",
     "Applied AI Engineer",
+    "Computer Vision Specialist",
     "Full Stack Developer",
+    "NLP Practitioner"
 ];
 
 let count = 0;
@@ -236,13 +238,14 @@ const modalOverlay = document.getElementById("modal-overlay");
 const modalClose = document.getElementById("modal-close");
 
 function openModal(card) {
-    const title    = card.dataset.title;
-    const cat      = card.dataset.cat;
-    const catType  = card.dataset.catType;
-    const role     = card.dataset.role;
-    const desc     = card.dataset.desc;
-    const insight  = card.dataset.insight;
-    const stack    = card.dataset.stack;
+    const title      = card.dataset.title;
+    const cat        = card.dataset.cat;
+    const catType    = card.dataset.catType;
+    const role       = card.dataset.role;
+    const desc       = card.dataset.desc;
+    const insight    = card.dataset.insight;
+    const stack      = card.dataset.stack;
+    const highlights = card.dataset.highlights;
 
     document.getElementById("modal-title").textContent   = title;
     document.getElementById("modal-role").textContent    = role;
@@ -252,7 +255,30 @@ function openModal(card) {
     // Category badge
     const catEl = document.getElementById("modal-cat");
     catEl.textContent = cat;
-    catEl.className = "modal-cat " + (catType === "ai" ? "ai-cat" : "fullstack-cat");
+    catEl.className = "modal-cat";
+    if (catType === "ai") catEl.classList.add("ai-cat");
+    else if (catType === "other") catEl.classList.add("other-cat");
+    else catEl.classList.add("fullstack-cat");
+
+    // Highlights list
+    const hlEl = document.getElementById("modal-highlights");
+    const hlWrap = document.getElementById("modal-highlights-wrap");
+    hlEl.innerHTML = "";
+    if (highlights) {
+        try {
+            const items = JSON.parse(highlights);
+            items.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = item;
+                hlEl.appendChild(li);
+            });
+            hlWrap.style.display = "block";
+        } catch(e) {
+            hlWrap.style.display = "none";
+        }
+    } else {
+        hlWrap.style.display = "none";
+    }
 
     // Tech stack pills
     const stackEl = document.getElementById("modal-stack");
