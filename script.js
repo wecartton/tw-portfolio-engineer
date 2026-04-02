@@ -246,6 +246,7 @@ function openModal(card) {
     const insight    = card.dataset.insight;
     const stack      = card.dataset.stack;
     const highlights = card.dataset.highlights;
+    const image      = card.dataset.image;
 
     document.getElementById("modal-title").textContent   = title;
     document.getElementById("modal-role").textContent    = role;
@@ -259,6 +260,17 @@ function openModal(card) {
     if (catType === "ai") catEl.classList.add("ai-cat");
     else if (catType === "other") catEl.classList.add("other-cat");
     else catEl.classList.add("fullstack-cat");
+
+    // IMAGE INJECTION
+    const imgWrap = document.getElementById("modal-image-wrap");
+    const imgEl   = document.getElementById("modal-image");
+
+    if (image) {
+        imgEl.src = image;
+        imgWrap.style.display = "block";
+    } else {
+        imgWrap.style.display = "none";
+    }
 
     // Highlights list
     const hlEl = document.getElementById("modal-highlights");

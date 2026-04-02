@@ -1434,3 +1434,16 @@ footer p {
     .btn { justify-content: center; }
     .hero-stats { flex-wrap: wrap; justify-content: center; }
 }
+
+#modal-image-wrap {
+    margin-bottom: 20px;
+}
+
+#modal-image {
+    width: 100%;
+    max-height: 320px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #0d1423;
+    padding: 10px;
+}

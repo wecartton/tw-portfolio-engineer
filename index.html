@@ -238,6 +238,7 @@
             <!-- 3. Fire Response Robot -->
             <div class="project-card reveal" data-category="ai"
                  data-title="Autonomous Fire Response Robot"
+                 data-image="robotics.png"
                  data-cat="Robotics" data-cat-type="ai" data-role="Robotics Engineer"
                  data-desc="Autonomous Mobile Robot (AMR) built with Arduino Uno as the main controller. Integrates an ultrasonic sensor on a servo motor for 180° obstacle scanning, and a flame sensor for fire localization. The software runs a continuous loop: scan → detect obstacle → navigate around it; or detect fire → halt motors → activate propeller suppression. All components connected via breadboard and powered by power bank + 2 Li-thium batteries."
                  data-insight="Code deployment is only step one. The initial 15cm sensor threshold caused frequent collisions due to ultrasonic response latency. Increasing to 25cm significantly improved navigation. Physical autonomous systems demand continuous, iterative real-world calibration that no simulation can replicate."
@@ -253,12 +254,12 @@
             <!-- 4. Clinical NLP -->
             <div class="project-card reveal" data-category="ai"
                  data-title="Clinical Text Classification"
-                 data-cat="NLP / Deep Learning" data-cat-type="ai" data-role="Deep Learning Engineer"
+                 data-cat="Natural L. Processing" data-cat-type="ai" data-role="Deep Learning Engineer"
                  data-desc="Classified 45,000 medical transcription records from MTSamples into 21 medical specialty categories. Compared two approaches head-to-head: (1) Logistic Regression with TF-IDF + PCA feature engineering — achieved 67% accuracy after reducing from 40 to 12 classes; (2) Fine-tuned DistilBERT Transformer on NVIDIA T4 GPU for 10 epochs — achieved 88% accuracy with automatic feature engineering via attention mechanisms. Published as a journal development report article."
                  data-insight="Transformers fundamentally change text classification by capturing bidirectional long-range context. DistilBERT's automatic feature engineering through attention mechanisms rendered manual TF-IDF + PCA pipelines obsolete for complex medical linguistics. Accuracy jumped from 67% → 88%."
                  data-stack="DistilBERT · Hugging Face · PyTorch · TensorFlow · Python · NVIDIA T4 GPU"
                  data-highlights='["45,000 records, 21 medical specialties (MTSamples dataset)","Logistic Regression + TF-IDF + PCA: 67% accuracy","DistilBERT fine-tuned on T4 GPU (10 epochs): 88% accuracy","Published as journal development report article"]'>
-                <div class="pc-top"><span class="project-cat ai-cat">NLP / Deep Learning</span></div>
+                <div class="pc-top"><span class="project-cat ai-cat">Natural L. Processing</span></div>
                 <h4>Clinical Text Classification</h4>
                 <p>DistilBERT vs. Logistic Regression on 45,000 medical records — Transformer achieved 88% accuracy.</p>
                 <div class="pc-stack">DistilBERT · Hugging Face · PyTorch · NVIDIA T4</div>
@@ -436,6 +437,9 @@
         </div>
         <h3 class="modal-title" id="modal-title"></h3>
         <div class="modal-divider"></div>
+        <div id="modal-image-wrap" style="display:none;">
+            <img id="modal-image">
+        </div>
         <p class="modal-desc" id="modal-desc"></p>
         <div class="modal-highlights-wrap" id="modal-highlights-wrap">
             <span class="modal-stack-label">Key Highlights</span>
