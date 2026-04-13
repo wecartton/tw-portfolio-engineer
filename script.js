@@ -6,9 +6,7 @@
 const texts = [
     "Software Engineer",
     "Applied AI Engineer",
-    "Computer Vision Specialist",
-    "Full Stack Developer",
-    "NLP Practitioner"
+    "Full Stack Developer"
 ];
 
 let count = 0;
@@ -350,4 +348,22 @@ const sectionObserver = new IntersectionObserver(entries => {
     });
 }, { threshold: 0.4 });
 
-sections.forEach(sec => sectionObserver.observe(sec));
+
+
+// ── TECH ECOSYSTEM TABS ──
+const techCatBtns = document.querySelectorAll(".tech-cat-btn");
+const techDetails = document.querySelectorAll(".tech-detail");
+
+techCatBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const cat = btn.dataset.cat;
+
+        techCatBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        techDetails.forEach(d => {
+            d.classList.remove("active");
+            if (d.dataset.cat === cat) d.classList.add("active");
+        });
+    });
+});
