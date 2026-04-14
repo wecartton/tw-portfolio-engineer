@@ -8,13 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+<canvas id="space-canvas"></canvas>
 
 <nav class="navbar" id="navbar">
-    <div class="container nav-inner">
+    <div class="nav-island">
         <a href="#" class="nav-logo">TW<span class="logo-dot">.</span></a>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
         <ul class="nav-links" id="nav-links">
             <li><a href="#about" class="nav-link">About</a></li>
             <li><a href="#experience" class="nav-link">Experience</a></li>
@@ -22,6 +20,23 @@
             <li><a href="#skills" class="nav-link">Skills</a></li>
             <li><a href="#contact" class="nav-link nav-cta">Contact</a></li>
         </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <!-- <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">🌙</button> -->
+         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+            <svg id="theme-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+        </button>
     </div>
 </nav>
 
@@ -86,7 +101,7 @@
                     <div class="photo-glow"></div>
                 </div>
                 <div class="about-photo-info">
-                    <div class="info-chip">
+                    <!-- <div class="info-chip">
                         <span class="chip-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                         </span>
@@ -94,15 +109,19 @@
                     </div>
                     <div class="info-chip">
                         <span class="chip-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                        </span>
-                        <span>West Jakarta, Indonesia</span>
-                    </div>
-                    <div class="info-chip">
-                        <span class="chip-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                         </span>
                         <span>GPA 3.75 / 4.00</span>
+                    </div> -->
+                    <!-- LOCATION CARD — gaya pszostak.pl -->
+                    <div class="location-card">
+                        <div class="location-map-bg"></div>
+                        <div class="location-scan-line"></div>
+                        <div class="location-content">
+                            <div class="location-title">JAKARTA, INDONESIA</div>
+                            <div class="location-coords">-6.2088° S, 106.8456° E</div>
+                            <div class="location-tz">+ GMT+7</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -121,7 +140,7 @@
                 <div class="timeline-content">
                     <div class="timeline-header">
                         <div><h4>Software Engineer <span class="role-type">(Full Stack)</span></h4><p class="company">PT Bangun Nusa Persada · West Jakarta</p></div>
-                        <span class="timeline-date">Feb 2025 – Present</span>
+                        <span class="timeline-date">Feb 2025 – <span class="date-present">Present</span></span>
                     </div>
                     <ul class="timeline-points">
                         <li>Full SDLC: system analysis, architecture design, implementation, deployment & maintenance</li>
@@ -180,160 +199,164 @@
             <button class="filter-btn" data-filter="other">Other</button>
         </div>
 
-        <div class="project-grid">
+        <div class="carousel-wrapper">
 
-            <!-- 1. CRMONE -->
-            <div class="project-card reveal" data-category="fullstack"
-                 data-title="CRMONE — Lead Opportunity CRM"
-                 data-cat="Full Stack" data-cat-type="fullstack" data-role="Software Engineer"
-                 data-desc="Internal CRM system built for PT Bangun Nusa Persada with full SDLC ownership. Features role-based access control (RBAC) across 4 user types: Superuser, Administrator, Supervisor, and Sales. Modules include inquiry management, proposal tracking with status filtering, and Company 360 view. Built with FastAPI backend, React.js + Vite frontend, PostgreSQL with normalized schema, and deployed via Docker Compose on Dokploy."
-                 data-insight="Real-world SDLC demands more than code — proper UML diagrams, DB normalization, and a robust CI/CD pipeline are what separate working prototypes from production-grade systems."
-                 data-stack="FastAPI · React.js · PostgreSQL · Docker · Dokploy · Git · Vite"
-                 data-highlights='["Role-based access control (4 user types: Superuser, Admin, Supervisor, Sales)","Full SDLC: UML diagrams, wireframes, DB normalization, deployment","CI/CD pipeline with Docker Compose & Dokploy","Modules: Inquiry, Proposal Tracking, Company 360"]'>
-                <div class="pc-top"><span class="project-cat fullstack-cat">Full Stack</span></div>
-                <h4>CRMONE — Lead Opportunity CRM</h4>
-                <p>Internal CRM with RBAC (4 user types), inquiry management, proposal tracking, and company 360 view.</p>
-                <div class="pc-stack">FastAPI · React.js · PostgreSQL · Docker</div>
-                <button class="btn-view-detail">View Details →</button>
+            <!-- Nav Buttons -->
+            <button class="carousel-btn carousel-prev" id="carousel-prev">&#8249;</button>
+            <button class="carousel-btn carousel-next" id="carousel-next">&#8250;</button>
+
+            <!-- Track -->
+            <div class="carousel-track-clip">
+                <div class="carousel-track" id="carousel-track">
+
+                    <div class="project-card" data-category="fullstack"
+                        data-title="CRMONE — Lead Opportunity CRM"
+                        data-cat="Full Stack" data-cat-type="fullstack" data-role="Software Engineer"
+                        data-desc="Internal CRM system built for PT Bangun Nusa Persada with full SDLC ownership. Features role-based access control (RBAC) across 4 user types: Superuser, Administrator, Supervisor, and Sales. Modules include inquiry management, proposal tracking with status filtering, and Company 360 view. Built with FastAPI backend, React.js + Vite frontend, PostgreSQL with normalized schema, and deployed via Docker Compose on Dokploy."
+                        data-insight="Real-world SDLC demands more than code — proper UML diagrams, DB normalization, and a robust CI/CD pipeline are what separate working prototypes from production-grade systems."
+                        data-stack="FastAPI · React.js · PostgreSQL · Docker · Dokploy · Git · Vite"
+                        data-highlights='["Role-based access control (4 user types: Superuser, Admin, Supervisor, Sales)","Full SDLC: UML diagrams, wireframes, DB normalization, deployment","CI/CD pipeline with Docker Compose & Dokploy","Modules: Inquiry, Proposal Tracking, Company 360"]'>
+                        <div class="pc-top"><span class="project-cat fullstack-cat">Full Stack</span></div>
+                        <h4>CRMONE — Lead Opportunity CRM</h4>
+                        <p>Internal CRM with RBAC (4 user types), inquiry management, proposal tracking, and company 360 view.</p>
+                        <div class="pc-stack">FastAPI · React.js · PostgreSQL · Docker</div>
+                        <button class="btn-view-detail">View Details →</button>
+                    </div>
+
+                    <div class="project-card" data-category="ai"
+                        data-title="Medical Equipment Detection"
+                        data-cat="Computer Vision" data-cat-type="ai" data-role="Deep Learning Engineer"
+                        data-desc="Object detection system for 18 types of medical equipment in clinical environments, built under severe data scarcity. The raw dataset of 235 images was scaled to 1,019 using 5 augmentation techniques (horizontal/vertical flip, 90° clockwise, counter-clockwise, upside-down rotation). Preprocessing included auto-orient, resize to 640×640, and histogram equalization. Trained YOLOv5 with 98/1/1% train-valid-test split and deployed via Roboflow inference API."
+                        data-insight="High class similarity (forceps vs. clamps) degraded recall to just 27% despite 91.7% precision. This revealed that the real bottleneck is annotation quality and labeling precision — not the algorithm. mAP: 46.3% · Precision: 91.7% · Recall: 27.0%"
+                        data-stack="YOLOv5 · Roboflow · Python · OpenCV · Google Colab"
+                        data-highlights='["Dataset scaled: 235 → 1,019 images (5× augmentation)","18 equipment classes (forceps, clamps, stethoscope, syringe, EKG machine, etc.)","Model metrics: Precision 91.7% | Recall 27.0% | mAP 46.3%","Deployed and tested via Roboflow inference API"]'>
+                        <div class="pc-top"><span class="project-cat ai-cat">Computer Vision</span></div>
+                        <h4>Medical Equipment Detection</h4>
+                        <p>YOLOv5 detection system scaled from 235 to 1,019 images across 18 medical equipment classes.</p>
+                        <div class="pc-stack">YOLOv5 · Roboflow · Python · OpenCV</div>
+                        <button class="btn-view-detail">View Details →</button>
+                    </div>
+
+                    <div class="project-card" data-category="ai"
+                        data-title="Autonomous Fire Response Robot"
+                        data-image="robotics.png"
+                        data-cat="Robotics" data-cat-type="ai" data-role="Robotics Engineer"
+                        data-desc="Autonomous Mobile Robot (AMR) built with Arduino Uno as the main controller. Integrates an ultrasonic sensor on a servo motor for 180° obstacle scanning, and a flame sensor for fire localization. The software runs a continuous loop: scan → detect obstacle → navigate around it; or detect fire → halt motors → activate propeller suppression. All components connected via breadboard and powered by power bank + 2 Li-thium batteries."
+                        data-insight="Code deployment is only step one. The initial 15cm sensor threshold caused frequent collisions due to ultrasonic response latency. Increasing to 25cm significantly improved navigation. Physical autonomous systems demand continuous, iterative real-world calibration that no simulation can replicate."
+                        data-stack="Arduino Uno · C++ · Ultrasonic Sensor · Servo Motor · Flame Sensor · Motor Driver · L298N"
+                        data-highlights='["Arduino Uno with 180° ultrasonic sweep via servo motor","Flame sensor: triggers motor stop + propeller fire suppression","Obstacle threshold tuned from 15cm → 25cm after real-world testing","Continuous scanning loop: simultaneous obstacle avoidance + fire detection"]'>
+                        <div class="pc-top"><span class="project-cat ai-cat">Robotics</span></div>
+                        <h4>Autonomous Fire Response Robot</h4>
+                        <p>AMR with ultrasonic + flame sensors for autonomous obstacle navigation and fire suppression.</p>
+                        <div class="pc-stack">Arduino · C++ · Sensors · Hardware Integration</div>
+                        <button class="btn-view-detail">View Details →</button>
+                    </div>
+
+                    <div class="project-card" data-category="ai"
+                        data-title="Clinical Text Classification"
+                        data-cat="Natural L. Processing" data-cat-type="ai" data-role="Deep Learning Engineer"
+                        data-desc="Classified 45,000 medical transcription records from MTSamples into 21 medical specialty categories. Compared two approaches head-to-head: (1) Logistic Regression with TF-IDF + PCA feature engineering — achieved 67% accuracy after reducing from 40 to 12 classes; (2) Fine-tuned DistilBERT Transformer on NVIDIA T4 GPU for 10 epochs — achieved 88% accuracy with automatic feature engineering via attention mechanisms. Published as a journal development report article."
+                        data-insight="Transformers fundamentally change text classification by capturing bidirectional long-range context. DistilBERT's automatic feature engineering through attention mechanisms rendered manual TF-IDF + PCA pipelines obsolete for complex medical linguistics. Accuracy jumped from 67% → 88%."
+                        data-stack="DistilBERT · Hugging Face · PyTorch · TensorFlow · Python · NVIDIA T4 GPU"
+                        data-highlights='["45,000 records, 21 medical specialties (MTSamples dataset)","Logistic Regression + TF-IDF + PCA: 67% accuracy","DistilBERT fine-tuned on T4 GPU (10 epochs): 88% accuracy","Published as journal development report article"]'>
+                        <div class="pc-top"><span class="project-cat ai-cat">Natural L. Processing</span></div>
+                        <h4>Clinical Text Classification</h4>
+                        <p>DistilBERT vs. Logistic Regression on 45,000 medical records — Transformer achieved 88% accuracy.</p>
+                        <div class="pc-stack">DistilBERT · Hugging Face · PyTorch · NVIDIA T4</div>
+                        <button class="btn-view-detail">View Details →</button>
+                    </div>
+
+                    <div class="project-card" data-category="ai"
+                        data-title="Acne Detection & Classifier"
+                        data-cat="Computer Vision" data-cat-type="ai" data-role="Deep Learning Engineer"
+                        data-desc="Acne severity detection and lesion counting system using ResNet-50 (CNN) pre-trained on ImageNet. Used the ACNE04 dataset (1,467 images, 18,983 labeled lesion boxes). The model performs dual tasks simultaneously: global severity grading (Mild/Moderate/Severe/Very Severe per Hayashi criterion) and local lesion counting. Trained with SGD optimizer, batch size 32, 120 epochs, learning rate 0.001 (halved every 30 epochs), 5-fold cross-validation."
+                        data-insight="ResNet-50 residual connections solved the vanishing gradient problem. The dual-task framework (grading + counting simultaneously) outperformed single-task approaches. Final accuracy: 84.11% — surpassing general doctors (58–63%) and matching dermatologist-level performance (75–82%)."
+                        data-stack="ResNet-50 · PyTorch · CNN · ACNE04 Dataset · SGD Optimizer · Python"
+                        data-highlights='["ACNE04: 1,467 images with 18,983 lesion bounding boxes","Dual-task model: severity grading + lesion counting simultaneously","Accuracy: 84.11% vs. Dermatologist: 75–82% | General Doctor: 58–63%","5-fold cross-validation, 120 epochs, λ=0.6 optimal parameter"]'>
+                        <div class="pc-top"><span class="project-cat ai-cat">Computer Vision</span></div>
+                        <h4>Acne Detection & Classifier</h4>
+                        <p>ResNet-50 CNN achieving 84.11% accuracy — surpassing general doctors and matching dermatologists.</p>
+                        <div class="pc-stack">ResNet-50 · PyTorch · CNN · Python</div>
+                        <button class="btn-view-detail">View Details →</button>
+                    </div>
+
+                    <div class="project-card" data-category="fullstack"
+                        data-title="Cloudy Healthcare Assistant"
+                        data-cat="Full Stack + ML" data-cat-type="fullstack" data-role="Front-End Developer"
+                        data-desc="Web-based medical recommendation system that evolved from Logistic Regression to Gradient Boosting due to poor accuracy with limited symptom inputs. The system takes user-provided symptoms as binary input features and predicts diseases from 400+ symptom-disease patterns. Outputs include 6 categories: disease name, description, precautions, medications, workouts, and dietary recommendations."
+                        data-insight="A great ML model is useless without an accessible interface. When Logistic Regression showed insufficient accuracy with minimal symptom input, upgrading to Gradient Boosting's ensemble of decision trees dramatically improved results."
+                        data-stack="HTML · CSS · JavaScript · Bootstrap · Python · scikit-learn · Gradient Boosting"
+                        data-highlights='["Upgraded: Logistic Regression → Gradient Boosting for better accuracy","Binary feature encoding for 400+ symptom-disease patterns","6 output categories: disease, description, precautions, meds, workouts, diets","Accessible from any internet-connected device"]'>
+                        <div class="pc-top"><span class="project-cat fullstack-cat">Full Stack + ML</span></div>
+                        <h4>Cloudy Healthcare Assistant</h4>
+                        <p>Web-based disease recommendation system with Gradient Boosting across 6 output categories.</p>
+                        <div class="pc-stack">HTML/CSS/JS · Bootstrap · Python · scikit-learn</div>
+                        <button class="btn-view-detail">View Details →</button>
+                    </div>
+
+                    <div class="project-card" data-category="ai"
+                        data-title="Twinkle — Virtual Personal Assistant"
+                        data-cat="Speech Recognition" data-cat-type="ai" data-role="AI Engineer"
+                        data-desc="Voice-driven Virtual Personal Assistant (VPA) built for secretariat and office use. Audio pipeline: microphone input → MFCC feature extraction → Gaussian HMM for speech pattern recognition (80/20 train/test split). Supports 4 features: Speech-to-Text, web browser navigation via voice commands, speech-to-notes (auto-saves .docx files), and real-time speech translation via DeepL API."
+                        data-insight="Combining MFCC's perceptual audio representation with HMM's sequential modeling produced more reliable recognition for discrete office commands than pure neural network approaches."
+                        data-stack="Python · MFCC · Gaussian HMM · HMMLearn · Librosa · ElevenLabs API · DeepL API · python-docx"
+                        data-highlights='["MFCC pipeline: pre-emphasis (α=0.97) → FFT → Mel filterbank → DCT (12 coeffs)","Gaussian HMM for sequential speech pattern recognition","4 features: STT, browser navigation, note-taking (.docx), speech translation","DeepL API for professional multi-language translation"]'>
+                        <div class="pc-top"><span class="project-cat ai-cat">Speech Recognition</span></div>
+                        <h4>Twinkle — Virtual Personal Assistant</h4>
+                        <p>Voice-driven VPA using MFCC + Gaussian HMM for office automation across 4 core features.</p>
+                        <div class="pc-stack">Python · MFCC · HMM · DeepL · ElevenLabs</div>
+                        <button class="btn-view-detail">View Details →</button>
+                    </div>
+
+                    <div class="project-card" data-category="fullstack"
+                        data-title="DYSON AI — LLM Knowledge Base"
+                        data-cat="LLM System" data-cat-type="fullstack" data-role="UI/UX Designer"
+                        data-desc="LLM-powered Knowledge-Based Management System designed for operational efficiency. Designed dual-role interfaces: admin dashboard (CRUD for knowledge base, system prompt management, vector search configuration, conversation monitoring) and user-facing chat interface."
+                        data-insight="Minimizing admin cognitive load through intuitive UX dramatically increases system adoption. A well-designed interface reduces training time, increases accuracy of knowledge CRUD operations."
+                        data-stack="JavaScript · React.js · Node.js · Python · MongoDB · LLM APIs"
+                        data-highlights='["Admin dashboard: knowledge CRUD, system prompt, conversation monitoring","User chat interface with LLM-powered responses","Vector search + LLM model config (model, temperature) via admin panel","Role-based interface: admin vs. end-user experience"]'>
+                        <div class="pc-top"><span class="project-cat fullstack-cat">LLM System</span></div>
+                        <h4>DYSON AI — LLM Knowledge Base</h4>
+                        <p>LLM Knowledge Management System with dual-role admin/user interfaces and conversation monitoring.</p>
+                        <div class="pc-stack">React.js · Node.js · Python · MongoDB</div>
+                        <button class="btn-view-detail">View Details →</button>
+                    </div>
+
+                    <div class="project-card" data-category="fullstack"
+                        data-title="Presuniv Bite — E-Canteen App"
+                        data-cat="Mobile App" data-cat-type="fullstack" data-role="Back-End Developer"
+                        data-desc="Android food ordering application for President University students. As Back-End Developer, designed and implemented application logic in Java, leveraged Firebase Realtime Database for instant order sync, and Firebase Authentication for secure user login."
+                        data-insight="Real-time sync via Firebase completely transformed the ordering experience. The instant connection between student orders and vendor dashboards reduced confusion and wait times."
+                        data-stack="Java · XML · Firebase Realtime DB · Firebase Auth · Android Studio"
+                        data-highlights='["Real-time order sync between students and vendors via Firebase","Firebase Auth for secure registration/login","Menu browsing, cart, and order placement flow","Vendor order management and fulfillment tracking"]'>
+                        <div class="pc-top"><span class="project-cat fullstack-cat">Mobile App</span></div>
+                        <h4>Presuniv Bite — E-Canteen App</h4>
+                        <p>Android food ordering app with real-time Firebase sync between students and canteen vendors.</p>
+                        <div class="pc-stack">Java · XML · Firebase · Android</div>
+                        <button class="btn-view-detail">View Details →</button>
+                    </div>
+
+                    <div class="project-card" data-category="other"
+                        data-title="Flappy Bird — 3D Game in Blender"
+                        data-cat="3D / Game Dev" data-cat-type="other" data-role="Game Developer"
+                        data-desc="3D recreation of the classic Flappy Bird built inside Blender using the UPBGE framework. Features 2-player simultaneous mode — each player controls an independent bird character. Key mechanics: keyboard-triggered z-force for upward movement, randomized pipe generation using UPBGE logic bricks."
+                        data-insight="Building a complete game in Blender/UPBGE exposes the full pipeline — 3D modeling, physics setup, collision detection, game logic, and scoring — in one environment."
+                        data-stack="Blender 3D · UPBGE · Logic Bricks · Python · 3D Modeling · Physics Engine"
+                        data-highlights='["2-player simultaneous mode with independent bird characters","Randomized pipe obstacles: 3 configurations, logic brick spawning","Physics-based flight (z-force=500 on keypress/tap)","Collision detection ends game + property-based score counter"]'>
+                        <div class="pc-top"><span class="project-cat other-cat">3D / Game Dev</span></div>
+                        <h4>Flappy Bird — 3D Game</h4>
+                        <p>3D Flappy Bird in Blender/UPBGE with 2-player mode, physics-based movement, and randomized obstacles.</p>
+                        <div class="pc-stack">Blender · UPBGE · Logic Bricks · Python</div>
+                        <button class="btn-view-detail">View Details →</button>
+                    </div>
+
+                </div><!-- end carousel-track -->
             </div>
 
-            <!-- 2. Medical Equipment Detection -->
-            <div class="project-card reveal" data-category="ai"
-                 data-title="Medical Equipment Detection"
-                 data-cat="Computer Vision" data-cat-type="ai" data-role="Deep Learning Engineer"
-                 data-desc="Object detection system for 18 types of medical equipment in clinical environments, built under severe data scarcity. The raw dataset of 235 images was scaled to 1,019 using 5 augmentation techniques (horizontal/vertical flip, 90° clockwise, counter-clockwise, upside-down rotation). Preprocessing included auto-orient, resize to 640×640, and histogram equalization. Trained YOLOv5 with 98/1/1% train-valid-test split and deployed via Roboflow inference API."
-                 data-insight="High class similarity (forceps vs. clamps) degraded recall to just 27% despite 91.7% precision. This revealed that the real bottleneck is annotation quality and labeling precision — not the algorithm. mAP: 46.3% · Precision: 91.7% · Recall: 27.0%"
-                 data-stack="YOLOv5 · Roboflow · Python · OpenCV · Google Colab"
-                 data-highlights='["Dataset scaled: 235 → 1,019 images (5× augmentation)","18 equipment classes (forceps, clamps, stethoscope, syringe, EKG machine, etc.)","Model metrics: Precision 91.7% | Recall 27.0% | mAP 46.3%","Deployed and tested via Roboflow inference API"]'>
-                <div class="pc-top"><span class="project-cat ai-cat">Computer Vision</span></div>
-                <h4>Medical Equipment Detection</h4>
-                <p>YOLOv5 detection system scaled from 235 to 1,019 images across 18 medical equipment classes.</p>
-                <div class="pc-stack">YOLOv5 · Roboflow · Python · OpenCV</div>
-                <button class="btn-view-detail">View Details →</button>
-            </div>
+            <!-- Dots indicator -->
+            <div class="carousel-dots" id="carousel-dots"></div>
+        </div><!-- end carousel-wrapper -->
 
-            <!-- 3. Fire Response Robot -->
-            <div class="project-card reveal" data-category="ai"
-                 data-title="Autonomous Fire Response Robot"
-                 data-image="robotics.png"
-                 data-cat="Robotics" data-cat-type="ai" data-role="Robotics Engineer"
-                 data-desc="Autonomous Mobile Robot (AMR) built with Arduino Uno as the main controller. Integrates an ultrasonic sensor on a servo motor for 180° obstacle scanning, and a flame sensor for fire localization. The software runs a continuous loop: scan → detect obstacle → navigate around it; or detect fire → halt motors → activate propeller suppression. All components connected via breadboard and powered by power bank + 2 Li-thium batteries."
-                 data-insight="Code deployment is only step one. The initial 15cm sensor threshold caused frequent collisions due to ultrasonic response latency. Increasing to 25cm significantly improved navigation. Physical autonomous systems demand continuous, iterative real-world calibration that no simulation can replicate."
-                 data-stack="Arduino Uno · C++ · Ultrasonic Sensor · Servo Motor · Flame Sensor · Motor Driver · L298N"
-                 data-highlights='["Arduino Uno with 180° ultrasonic sweep via servo motor","Flame sensor: triggers motor stop + propeller fire suppression","Obstacle threshold tuned from 15cm → 25cm after real-world testing","Continuous scanning loop: simultaneous obstacle avoidance + fire detection"]'>
-                <div class="pc-top"><span class="project-cat ai-cat">Robotics</span></div>
-                <h4>Autonomous Fire Response Robot</h4>
-                <p>AMR with ultrasonic + flame sensors for autonomous obstacle navigation and fire suppression.</p>
-                <div class="pc-stack">Arduino · C++ · Sensors · Hardware Integration</div>
-                <button class="btn-view-detail">View Details →</button>
-            </div>
-
-            <!-- 4. Clinical NLP -->
-            <div class="project-card reveal" data-category="ai"
-                 data-title="Clinical Text Classification"
-                 data-cat="Natural L. Processing" data-cat-type="ai" data-role="Deep Learning Engineer"
-                 data-desc="Classified 45,000 medical transcription records from MTSamples into 21 medical specialty categories. Compared two approaches head-to-head: (1) Logistic Regression with TF-IDF + PCA feature engineering — achieved 67% accuracy after reducing from 40 to 12 classes; (2) Fine-tuned DistilBERT Transformer on NVIDIA T4 GPU for 10 epochs — achieved 88% accuracy with automatic feature engineering via attention mechanisms. Published as a journal development report article."
-                 data-insight="Transformers fundamentally change text classification by capturing bidirectional long-range context. DistilBERT's automatic feature engineering through attention mechanisms rendered manual TF-IDF + PCA pipelines obsolete for complex medical linguistics. Accuracy jumped from 67% → 88%."
-                 data-stack="DistilBERT · Hugging Face · PyTorch · TensorFlow · Python · NVIDIA T4 GPU"
-                 data-highlights='["45,000 records, 21 medical specialties (MTSamples dataset)","Logistic Regression + TF-IDF + PCA: 67% accuracy","DistilBERT fine-tuned on T4 GPU (10 epochs): 88% accuracy","Published as journal development report article"]'>
-                <div class="pc-top"><span class="project-cat ai-cat">Natural L. Processing</span></div>
-                <h4>Clinical Text Classification</h4>
-                <p>DistilBERT vs. Logistic Regression on 45,000 medical records — Transformer achieved 88% accuracy.</p>
-                <div class="pc-stack">DistilBERT · Hugging Face · PyTorch · NVIDIA T4</div>
-                <button class="btn-view-detail">View Details →</button>
-            </div>
-
-            <!-- 5. Acne Detection -->
-            <div class="project-card reveal" data-category="ai"
-                 data-title="Acne Detection & Classifier"
-                 data-cat="Computer Vision" data-cat-type="ai" data-role="Deep Learning Engineer"
-                 data-desc="Acne severity detection and lesion counting system using ResNet-50 (CNN) pre-trained on ImageNet. Used the ACNE04 dataset (1,467 images, 18,983 labeled lesion boxes). The model performs dual tasks simultaneously: global severity grading (Mild/Moderate/Severe/Very Severe per Hayashi criterion) and local lesion counting. Trained with SGD optimizer, batch size 32, 120 epochs, learning rate 0.001 (halved every 30 epochs), 5-fold cross-validation."
-                 data-insight="ResNet-50 residual connections solved the vanishing gradient problem. The dual-task framework (grading + counting simultaneously) outperformed single-task approaches. Final accuracy: 84.11% — surpassing general doctors (58–63%) and matching dermatologist-level performance (75–82%)."
-                 data-stack="ResNet-50 · PyTorch · CNN · ACNE04 Dataset · SGD Optimizer · Python"
-                 data-highlights='["ACNE04: 1,467 images with 18,983 lesion bounding boxes","Dual-task model: severity grading + lesion counting simultaneously","Accuracy: 84.11% vs. Dermatologist: 75–82% | General Doctor: 58–63%","5-fold cross-validation, 120 epochs, λ=0.6 optimal parameter"]'>
-                <div class="pc-top"><span class="project-cat ai-cat">Computer Vision</span></div>
-                <h4>Acne Detection & Classifier</h4>
-                <p>ResNet-50 CNN achieving 84.11% accuracy — surpassing general doctors and matching dermatologists.</p>
-                <div class="pc-stack">ResNet-50 · PyTorch · CNN · Python</div>
-                <button class="btn-view-detail">View Details →</button>
-            </div>
-
-            <!-- 6. Cloudy Healthcare -->
-            <div class="project-card reveal" data-category="fullstack"
-                 data-title="Cloudy Healthcare Assistant"
-                 data-cat="Full Stack + ML" data-cat-type="fullstack" data-role="Front-End Developer"
-                 data-desc="Web-based medical recommendation system that evolved from Logistic Regression to Gradient Boosting due to poor accuracy with limited symptom inputs. The system takes user-provided symptoms as binary input features and predicts diseases from 400+ symptom-disease patterns. Outputs include 6 categories: disease name, description, precautions, medications, workouts, and dietary recommendations. Preprocessing involved feature normalization with underscore replacement and binary encoding."
-                 data-insight="A great ML model is useless without an accessible interface. When Logistic Regression showed insufficient accuracy with minimal symptom input, upgrading to Gradient Boosting's ensemble of decision trees dramatically improved results — showing that model selection must be driven by real-world usage patterns."
-                 data-stack="HTML · CSS · JavaScript · Bootstrap · Python · scikit-learn · Gradient Boosting"
-                 data-highlights='["Upgraded: Logistic Regression → Gradient Boosting for better accuracy","Binary feature encoding for 400+ symptom-disease patterns","6 output categories: disease, description, precautions, meds, workouts, diets","Accessible from any internet-connected device"]'>
-                <div class="pc-top"><span class="project-cat fullstack-cat">Full Stack + ML</span></div>
-                <h4>Cloudy Healthcare Assistant</h4>
-                <p>Web-based disease recommendation system with Gradient Boosting across 6 output categories.</p>
-                <div class="pc-stack">HTML/CSS/JS · Bootstrap · Python · scikit-learn</div>
-                <button class="btn-view-detail">View Details →</button>
-            </div>
-
-            <!-- 7. Twinkle VPA -->
-            <div class="project-card reveal" data-category="ai"
-                 data-title="Twinkle — Virtual Personal Assistant"
-                 data-cat="Speech Recognition" data-cat-type="ai" data-role="AI Engineer"
-                 data-desc="Voice-driven Virtual Personal Assistant (VPA) built for secretariat and office use. Audio pipeline: microphone input → MFCC feature extraction (pre-emphasis, frame blocking, FFT, DCT → 12 coefficients/frame) → Gaussian HMM for speech pattern recognition (80/20 train/test split). Supports 4 features: Speech-to-Text, web browser navigation via voice commands (opens Netflix, Spotify, YouTube), speech-to-notes (auto-saves .docx files), and real-time speech translation via DeepL API. Voice synthesis via ElevenLabs deep learning API."
-                 data-insight="Combining MFCC's perceptual audio representation (mimicking human ear's non-linear frequency perception) with HMM's sequential modeling produced more reliable recognition for discrete office commands than pure neural network approaches, which had moderate real-world accuracy despite higher benchmark performance."
-                 data-stack="Python · MFCC · Gaussian HMM · HMMLearn · Librosa · ElevenLabs API · DeepL API · python-docx"
-                 data-highlights='["MFCC pipeline: pre-emphasis (α=0.97) → FFT → Mel filterbank → DCT (12 coeffs)","Gaussian HMM for sequential speech pattern recognition","4 features: STT, browser navigation, note-taking (.docx), speech translation","DeepL API for professional multi-language translation"]'>
-                <div class="pc-top"><span class="project-cat ai-cat">Speech Recognition</span></div>
-                <h4>Twinkle — Virtual Personal Assistant</h4>
-                <p>Voice-driven VPA using MFCC + Gaussian HMM for office automation across 4 core features.</p>
-                <div class="pc-stack">Python · MFCC · HMM · DeepL · ElevenLabs</div>
-                <button class="btn-view-detail">View Details →</button>
-            </div>
-
-            <!-- 8. DYSON AI -->
-            <div class="project-card reveal" data-category="fullstack"
-                 data-title="DYSON AI — LLM Knowledge Base"
-                 data-cat="LLM System" data-cat-type="fullstack" data-role="UI/UX Designer"
-                 data-desc="LLM-powered Knowledge-Based Management System designed for operational efficiency. Designed dual-role interfaces: admin dashboard (CRUD for knowledge base, system prompt management, vector search configuration, conversation monitoring) and user-facing chat interface. Built with React.js + Node.js backend and MongoDB for flexible document storage. LLM model configuration (model name, temperature) managed via admin panel."
-                 data-insight="Minimizing admin cognitive load through intuitive UX dramatically increases system adoption. A well-designed interface reduces training time, increases accuracy of knowledge CRUD operations, and directly impacts how effectively the LLM serves end-users in daily workflows."
-                 data-stack="JavaScript · React.js · Node.js · Python · MongoDB · LLM APIs"
-                 data-highlights='["Admin dashboard: knowledge CRUD, system prompt, conversation monitoring","User chat interface with LLM-powered responses","Vector search + LLM model config (model, temperature) via admin panel","Role-based interface: admin vs. end-user experience"]'>
-                <div class="pc-top"><span class="project-cat fullstack-cat">LLM System</span></div>
-                <h4>DYSON AI — LLM Knowledge Base</h4>
-                <p>LLM Knowledge Management System with dual-role admin/user interfaces and conversation monitoring.</p>
-                <div class="pc-stack">React.js · Node.js · Python · MongoDB</div>
-                <button class="btn-view-detail">View Details →</button>
-            </div>
-
-            <!-- 9. Presuniv Bite -->
-            <div class="project-card reveal" data-category="fullstack"
-                 data-title="Presuniv Bite — E-Canteen App"
-                 data-cat="Mobile App" data-cat-type="fullstack" data-role="Back-End Developer"
-                 data-desc="Android food ordering application for President University students. As Back-End Developer, designed and implemented application logic in Java, leveraged Firebase Realtime Database for instant order sync, and Firebase Authentication for secure user login. The app supports menu browsing, cart management, and order placement — eliminating physical queue visits. Vendors receive real-time order notifications and manage fulfillment through the same platform."
-                 data-insight="Real-time sync via Firebase completely transformed the ordering experience. The instant connection between student orders and vendor dashboards reduced confusion and wait times. Backend architecture doesn't just define functionality — it defines product quality, user trust, and adoption rate."
-                 data-stack="Java · XML · Firebase Realtime DB · Firebase Auth · Android Studio"
-                 data-highlights='["Real-time order sync between students and vendors via Firebase","Firebase Auth for secure registration/login","Menu browsing, cart, and order placement flow","Vendor order management and fulfillment tracking"]'>
-                <div class="pc-top"><span class="project-cat fullstack-cat">Mobile App</span></div>
-                <h4>Presuniv Bite — E-Canteen App</h4>
-                <p>Android food ordering app with real-time Firebase sync between students and canteen vendors.</p>
-                <div class="pc-stack">Java · XML · Firebase · Android</div>
-                <button class="btn-view-detail">View Details →</button>
-            </div>
-
-            <!-- 10. Flappy Bird -->
-            <div class="project-card reveal" data-category="other"
-                 data-title="Flappy Bird — 3D Game in Blender"
-                 data-cat="3D / Game Dev" data-cat-type="other" data-role="Game Developer"
-                 data-desc="3D recreation of the classic Flappy Bird built inside Blender using the UPBGE (Blender Game Engine) framework. Features 2-player simultaneous mode — each player controls an independent bird character. Key mechanics: keyboard-triggered z-force for upward movement, randomized pipe generation using UPBGE logic bricks (3 pipe configurations, 'Always' sensor with pulse level + skip=260), independent collision detection per bird, and real-time per-player scoring via property actuators."
-                 data-insight="Building a complete game in Blender/UPBGE exposes the full pipeline — 3D modeling, physics setup, collision detection, game logic, and scoring — in one environment. The multiplayer design required careful simultaneous input handling and independent object state management, reinforcing modular logic design principles."
-                 data-stack="Blender 3D · UPBGE · Logic Bricks · Python · 3D Modeling · Physics Engine"
-                 data-highlights='["2-player simultaneous mode with independent bird characters","Randomized pipe obstacles: 3 configurations, logic brick spawning","Physics-based flight (z-force=500 on keypress/tap)","Collision detection ends game + property-based score counter"]'>
-                <div class="pc-top"><span class="project-cat other-cat">3D / Game Dev</span></div>
-                <h4>Flappy Bird — 3D Game</h4>
-                <p>3D Flappy Bird in Blender/UPBGE with 2-player mode, physics-based movement, and randomized obstacles.</p>
-                <div class="pc-stack">Blender · UPBGE · Logic Bricks · Python</div>
-                <button class="btn-view-detail">View Details →</button>
-            </div>
-
-        </div>
     </div>
 </section>
 
